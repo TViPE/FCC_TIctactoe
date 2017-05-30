@@ -1,0 +1,81 @@
+body {
+	font-family: 'Pacifico', cursive;
+}
+header {
+	margin-top: 40px;
+}
+header h1{
+	font-size: 6em;
+}
+
+.pickSymbol {
+	width: 400px;
+	height: 400px;
+	margin: auto;
+}
+.innerPickSymbol {
+	width: 400px;
+	height: 200px;
+	border: 1px solid;
+	border-radius: 5px;
+	margin-top: 100px;
+	background-color: #223d68;
+}
+.pickSymbolText {
+	color: #ffffff;
+	margin-top: 40px;
+	font-size: 30px;
+	letter-spacing: 1px;
+}
+button {
+	width: 50px;
+	height: 50px;
+	margin-top: 20px;
+	margin-right: 5px;
+	margin-left: 5px;
+
+	-webkit-transition: background .55s ease;
+	-moz-transition: background .55s ease;
+	-ms-transition: background .55s ease;
+	-o-transition: background .55s ease;
+	transition: background .55s ease;
+}
+
+button:hover {
+	background-color: #fc6f37;
+}
+
+#btnX {
+	color: #910101;
+	font-size: 20px;
+}
+
+#btnO {
+	color: #011891;
+	font-size: 20px;
+}
+
+.gameSection {
+	max-width: 100%;
+	max-height: 100%;
+	margin-top: 10%;
+}
+
+.board {
+	
+}
+.board button {
+	top: -15px;
+	position: inherit;
+	width: 150px;
+	height: 150px;
+	margin-bottom: -10px;
+	margin-left: -8px;
+}
+
+
+
+
+
+
+
