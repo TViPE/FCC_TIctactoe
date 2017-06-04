@@ -26,35 +26,41 @@
 		<section class="pickSymbol">
 			<div class="innerPickSymbol text-center">
 				<p class="pickSymbolText">Pick a symbol</p>
-				<button class="btn" id="btnX">X</button>
-				<button class="btn" id="btnO">O</button>
+				<button class="btn symbolBtn" id="btnX">X</button>
+				<button class="btn symbolBtn" id="btnO">O</button>
+			</div>
+			<div class="pickPlayer text-center">
+				<p class="pickSymbolText">Pick first player</p>
+				<button class="btn">Player</button>
+				<button class="btn">Computer</button>
 			</div>
 		</section>
 		<!-- Game Section -->
-		<section class="gameSection" style="display:none">
+		<section class="gameBoard" style="display:none">
 			<div class="row">
-				<div class="col-md-3 text-center">
-					<p>Player or Computer - X Wins</p>
-					<p>Score</p>
+				<div class="col-md-3 text-center playerSection">
+					<p>Player: <span class="playerSymbol"></span></p>
+					<p><span class="playerScore"></span></p>
 				</div>
 				<div class="col-md-6 board">
 					<div class="row">
-						<div class="col-md-4 col-sm-4" id="0"><button class="btn btn-block">#</button></div>
-						<div class="col-md-4 col-sm-4" id="1"><button class="btn btn-block">#</button></div>
-						<div class="col-md-4 col-sm-4" id="2"><button class="btn btn-block">#</button></div>
-						<div class="col-md-4 col-sm-4" id="3"><button class="btn btn-block">#</button></div>
-						<div class="col-md-4 col-sm-4" id="4"><button class="btn btn-block">#</button></div>
-						<div class="col-md-4 col-sm-4" id="5"><button class="btn btn-block">#</button></div>
-						<div class="col-md-4 col-sm-4" id="6"><button class="btn btn-block">#</button></div>
-						<div class="col-md-4 col-sm-4" id="7"><button class="btn btn-block">#</button></div>
-						<div class="col-md-4 col-sm-4" id="8"><button class="btn btn-block">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="0" class="btn btn-block boardBtn">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="1" class="btn btn-block boardBtn">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="2" class="btn btn-block boardBtn">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="3" class="btn btn-block boardBtn">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="4" class="btn btn-block boardBtn">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="5"class="btn btn-block boardBtn">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="6"class="btn btn-block boardBtn">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="7" class="btn btn-block boardBtn">#</button></div>
+						<div class="col-md-4 col-sm-4"><button id="8" class="btn btn-block boardBtn">#</button></div>
 					</div>
 				</div>
-				<div class="col-md-3 text-center">
-					<p>Player or Computer - X Wins</p>
-					<p>Score</p>
+				<div class="col-md-3 text-center computerSection">
+					<p>Computer: <span class="computerSymbol"></span></p>
+					<p><span class="computerScore"></span></p>
 				</div>
 			</div>
+			
 		</section>
 	</div>
 </body>
