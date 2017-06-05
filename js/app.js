@@ -16,23 +16,24 @@ var winCombo = [
 					[0,4,8],
 					[2,4,6]
 				];
+
 function move(elem, currentPlayer){
 	var element = $(elem).attr('id');
 	//update gameBoard
 	gameBoard[element] = currentPlayer;
 	$(elem).text(currentPlayer);
-
 }
 
-function switchPlayer(currentPlayer){
+function switchPlayer(){
 	console.log("Before switch: " + currentPlayer);
-	if(currentPlayer == human) {
+ 	if(currentPlayer == human) {
 		currentPlayer = ai;
 	} else {
 		currentPlayer = human;
 	}
 	console.log("After switch: " + currentPlayer);
 }
+
 $(function(){
 	var hasPickedSymbol = false;
 	var hasPickedPlayer = false;
@@ -69,7 +70,9 @@ $(function(){
 		
 			$('.boardBtn').click(function(){
 				move(this, currentPlayer);
-				switchPlayer(currentPlayer);
+				console.log("currentPlayer: " + currentPlayer);
+				switchPlayer();
+				console.log("currentPlayer: " + currentPlayer);
 
 			});
 		}
