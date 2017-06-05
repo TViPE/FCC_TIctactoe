@@ -10,12 +10,12 @@ header h1{
 
 .pickSymbol {
 	width: 400px;
-	height: 400px;
+	height: 500px;
 	margin: auto;
 }
 .innerPickSymbol {
 	width: 400px;
-	height: 200px;
+	height: 500px;
 	border: 1px solid;
 	border-radius: 5px;
 	margin-top: 100px;
@@ -28,28 +28,15 @@ header h1{
 	letter-spacing: 1px;
 }
 
-.pickPlayer {
-	width: 400px;
-	height: 200px;
-	border: 1px solid;
-	border-radius: 5px;
-	margin-top: 100px;
-	background-color: #223d68;
-}
-
 .pickPlayerText {
 	color: #ffffff;
 	margin-top: 40px;
 	font-size: 30px;
 	letter-spacing: 1px;
 }
-.pickPlayer button {
-	width: 120px;
-	height: 50px;
-	font-size: 20px;
-}
+
 button {
-	width: 50px;
+	width: 100px;
 	height: 50px;
 	margin-top: 20px;
 	margin-right: 5px;
@@ -60,6 +47,13 @@ button {
 	-ms-transition: background .55s ease;
 	-o-transition: background .55s ease;
 	transition: background .55s ease;
+}
+
+.startBtn {
+	width: 210px;
+	margin-top: 50px;
+	font-size: 20px;
+	background-color: green;
 }
 
 button:hover {
