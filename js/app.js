@@ -54,13 +54,19 @@ function isWinning(board, currentPlayer){
 }
 
 // Finding all the emptiedIndexes that the human and ai have not checked
-function emptiedIndexes(board){
+function emptyIndexes(board){
 	return board.filter(function (elem){
 		return (elem != human && elem != ai)
 	})
 }
-// ------- Minimax Algorithm ------- //
 
+// ------- Minimax Algorithm ------- //
+ 
+function miniMax(board, currentPlayer){
+
+	//finding empty spots
+	// var empt
+}
 
 
 $(function(){
