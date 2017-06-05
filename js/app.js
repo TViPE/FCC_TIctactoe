@@ -2,7 +2,7 @@ var human = "X";
 var ai = "O";
 var currentPlayer;
 var isGamePlaying = false;
-var isWinning = false;
+var hasWin = false;
 // var hasPickedSymbol = false;
 // var hasPickedPlayer = false;
 var gameBoard = [0,1,2,3,4,5,6,7,8];
@@ -32,6 +32,22 @@ function switchPlayer(){
 		currentPlayer = human;
 	}
 	console.log("After switch: " + currentPlayer);
+}
+
+function isWinning(board, currentPlayer){
+	if (((board[0] == currentPlayer) && (board[1] == currentPlayer) &&(board[2] == currentPlayer)) ||
+		((board[3] == currentPlayer) && (board[4] == currentPlayer) &&(board[5] == currentPlayer)) ||
+		((board[6] == currentPlayer) && (board[7] == currentPlayer) &&(board[8] == currentPlayer)) ||
+		((board[0] == currentPlayer) && (board[3] == currentPlayer) &&(board[6] == currentPlayer)) ||
+		((board[1] == currentPlayer) && (board[4] == currentPlayer) &&(board[7] == currentPlayer)) ||
+		((board[2] == currentPlayer) && (board[5] == currentPlayer) &&(board[8] == currentPlayer)) ||
+		((board[0] == currentPlayer) && (board[4] == currentPlayer) &&(board[8] == currentPlayer)) ||
+		((board[2] == currentPlayer) && (board[4] == currentPlayer) &&(board[6] == currentPlayer))){
+		hasWin = true;
+		window.alert("Win!");
+	} else {
+		hasWin = false;
+	}
 }
 
 $(function(){
@@ -69,11 +85,10 @@ $(function(){
 			// Click function for boardBtn
 		
 			$('.boardBtn').click(function(){
+				
 				move(this, currentPlayer);
-				console.log("currentPlayer: " + currentPlayer);
+				isWinning(gameBoard, currentPlayer);
 				switchPlayer();
-				console.log("currentPlayer: " + currentPlayer);
-
 			});
 		}
 	})
