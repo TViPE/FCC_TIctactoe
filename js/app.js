@@ -36,7 +36,6 @@ function switchPlayer(){
 }
 
 function isWinning(board, currentPlayer){
-	
 	if (((board[0] == currentPlayer) && (board[1] == currentPlayer) &&(board[2] == currentPlayer)) ||
 		((board[3] == currentPlayer) && (board[4] == currentPlayer) &&(board[5] == currentPlayer)) ||
 		((board[6] == currentPlayer) && (board[7] == currentPlayer) &&(board[8] == currentPlayer)) ||
@@ -62,10 +61,96 @@ function emptyIndexes(board){
 
 // ------- Minimax Algorithm ------- //
  
-function miniMax(board, currentPlayer){
+function minimax(board, currentPlayer){
 
-	//finding empty spots
-	// var empt
+	// Finding empty spots
+	var emptySpots = emptyIndexes(board);
+
+	// Check for terminal state and retrn a value accordingly 
+	// ai win: 10
+	// human win: -10;
+	// tie : 0
+
+	if (isWinning(board, human)){
+		return {score: -10};
+	} else if(isWinning(board, ai)){
+		return {score: 10};
+	} else if(emptySpots.length === 0) {
+		return {score:0};
+	}
+
+	// Make an array moves[] iterating through empty spots and collect their scores.
+	var moves = [];
+
+	// Loop through available spots
+	for (var i = 0; i < emptySpots.length; i++){
+		// Create an object for each spot and store the index of that spot
+		var move = {};
+			move.index = board[emptySpots[i]];
+
+		// Set the empty spot to the current player
+		board[emptySpots[i]] = currentPlayer;
+
+		// Collect the score resulted from calling minimax on 
+		// the opponent of the current player
+		if (currentPlayer == ai){
+			var result = minimax(board, human);
+			move.score = result.score;
+		} else {
+			var result = minimax(board, ai);
+			move.score = result.score;
+		}
+
+		// Reset the spot to empty after obtaining score
+		board[emptySpots[i]] = move.index;
+
+		// Push the object to moves array
+		// moves = [
+		// 		{index: --, score: --}
+		// ]
+		moves.push(move);
+
+	}
+
+	// Evaluate score of each move in moves array.
+	// if AI is playing:
+	// 		-> choose the highest scrore 
+	//		-> set the bestScore to -Inifity 
+	//      -> Iterating through each move, get score, compare it with bestScore
+	// 		-> Update bestScore to new value if bestScore < move's score.
+	//		-> bestScore is largest in the moves'score
+
+	// if Human is playing:
+	// 		-> choose the highest scrore 
+	//		-> set the bestScore to Inifity 
+	//      -> Iterating through each move, get score, compare it with bestScore
+	// 		-> Update bestScore to new value if bestScore > move's score.
+	//		-> bestScore is lowest in the moves'score
+
+	var bestMove;
+	if(currentPlayer == ai){
+		var bestScore = Number.NEGATIVE_INFINITY;
+		for(var i = 0; i < moves.length; i++){
+			if(bestScore < moves[i].score){
+				// Find best score based on move's score
+				bestScore = moves[i].score;
+				// if Best Score found, update best move which is the index of the best score's move;
+				bestMove = i;
+			} 
+		}
+	} else {
+		var bestScore = Number.POSITIVE_INFINITY;
+		for(var i = 0; i<moves.length; i++){
+			if(bestScore > moves[i].score) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	}
+
+	// Return the chosen move(object) from the moves array
+	return moves[bestMove];
+
 }
 
 
@@ -108,7 +193,6 @@ $(function(){
 				move(this, currentPlayer);
 				moveCount++;
 				isWinning(gameBoard, currentPlayer);
-
 				switchPlayer();
 			});
 		}
