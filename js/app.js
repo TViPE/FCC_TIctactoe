@@ -16,6 +16,7 @@ var winCombo = [
 					[0,4,8],
 					[2,4,6]
 				];
+var moveCount = 0;
 
 function move(elem, currentPlayer){
 	var element = $(elem).attr('id');
@@ -35,6 +36,7 @@ function switchPlayer(){
 }
 
 function isWinning(board, currentPlayer){
+	
 	if (((board[0] == currentPlayer) && (board[1] == currentPlayer) &&(board[2] == currentPlayer)) ||
 		((board[3] == currentPlayer) && (board[4] == currentPlayer) &&(board[5] == currentPlayer)) ||
 		((board[6] == currentPlayer) && (board[7] == currentPlayer) &&(board[8] == currentPlayer)) ||
@@ -44,11 +46,13 @@ function isWinning(board, currentPlayer){
 		((board[0] == currentPlayer) && (board[4] == currentPlayer) &&(board[8] == currentPlayer)) ||
 		((board[2] == currentPlayer) && (board[4] == currentPlayer) &&(board[6] == currentPlayer))){
 		hasWin = true;
-		window.alert("Win!");
-	} else {
+		window.alert(currentPlayer + " Win!");
+	} else if (moveCount >8){
+		window.alert('Tie');	
 		hasWin = false;
 	}
 }
+
 
 $(function(){
 	var hasPickedSymbol = false;
@@ -87,7 +91,9 @@ $(function(){
 			$('.boardBtn').click(function(){
 				
 				move(this, currentPlayer);
+				moveCount++;
 				isWinning(gameBoard, currentPlayer);
+
 				switchPlayer();
 			});
 		}
