@@ -45,10 +45,12 @@ function isWinning(board, currentPlayer){
 		((board[0] == currentPlayer) && (board[4] == currentPlayer) &&(board[8] == currentPlayer)) ||
 		((board[2] == currentPlayer) && (board[4] == currentPlayer) &&(board[6] == currentPlayer))){
 		hasWin = true;
-		window.alert(currentPlayer + " Win!");
-	} else if (moveCount >8){
-		window.alert('Tie');	
+		//window.alert(currentPlayer + " Win!");
+		return true;
+	} else {
+		//window.alert('Tie');	
 		hasWin = false;
+		return false;
 	}
 }
 
@@ -71,9 +73,9 @@ function minimax(board, currentPlayer){
 	// human win: -10;
 	// tie : 0
 
-	if (isWinning(board, human)){
+	if (isWinning(board, human) === true){
 		return {score: -10};
-	} else if(isWinning(board, ai)){
+	} else if(isWinning(board, ai) === true){
 		return {score: 10};
 	} else if(emptySpots.length === 0) {
 		return {score:0};
@@ -129,7 +131,7 @@ function minimax(board, currentPlayer){
 
 	var bestMove;
 	if(currentPlayer == ai){
-		var bestScore = Number.NEGATIVE_INFINITY;
+		var bestScore = -10000;
 		for(var i = 0; i < moves.length; i++){
 			if(bestScore < moves[i].score){
 				// Find best score based on move's score
@@ -139,7 +141,7 @@ function minimax(board, currentPlayer){
 			} 
 		}
 	} else {
-		var bestScore = Number.POSITIVE_INFINITY;
+		var bestScore = 10000;
 		for(var i = 0; i<moves.length; i++){
 			if(bestScore > moves[i].score) {
 				bestScore = moves[i].score;
@@ -152,7 +154,7 @@ function minimax(board, currentPlayer){
 	return moves[bestMove];
 
 }
-
+// ------- Minimax Algorithm End ------- //
 
 $(function(){
 	var hasPickedSymbol = false;
@@ -189,12 +191,25 @@ $(function(){
 			// Click function for boardBtn
 		
 			$('.boardBtn').click(function(){
-				
 				move(this, currentPlayer);
 				moveCount++;
 				isWinning(gameBoard, currentPlayer);
 				switchPlayer();
+
+				if(currentPlayer == ai){
+					// Best move is also the id of the gameboard button
+					var bestMove = minimax(gameBoard,ai);
+					var bestMoveIndex = bestMove.index;
+					console.log("best index: " + bestMoveIndex);
+					$('#' + bestMoveIndex).click();
+				}
+				
 			});
+			// 	// Check if currentPlayer is ai
+			// 	// Call the minimax function to get the best move
+			// 	// Automatically find the button with the respective index
+			// });
+		
 		}
 	})
 });
