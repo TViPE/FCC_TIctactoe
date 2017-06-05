@@ -1,5 +1,6 @@
 body {
 	font-family: 'Pacifico', cursive;
+	background-color: #48c95e;
 }
 header {
 	margin-top: 40px;
@@ -27,13 +28,6 @@ header h1{
 	font-size: 30px;
 	letter-spacing: 1px;
 }
-/*
-.pickPlayerText {
-	color: #ffffff;
-	margin-top: 40px;
-	font-size: 30px;
-	letter-spacing: 1px;
-}*/
 
 button {
 	width: 100px;
@@ -53,7 +47,21 @@ button {
 	width: 210px;
 	margin-top: 50px;
 	font-size: 20px;
-	background-color: green;
+	background-color: #a1a147;
+	color: #9e2000;
+}
+
+#author {
+	margin-top: 20px;
+	font-size: 20px;
+	font-family: 'Fredoka One', cursive;
+	color: #fff;
+}
+
+#author a{
+	color: #fffffF;
+	text-decoration: none;
+	letter-spacing: 1px;
 }
 
 button:hover {
@@ -93,11 +101,6 @@ button:hover {
 	font-size: 40px;
 }
 
-.messageRow {
-	margin-top: 20px;
-	font-size: 30px;
-
-}
 
 
 
