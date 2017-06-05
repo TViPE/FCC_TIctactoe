@@ -53,6 +53,15 @@ function isWinning(board, currentPlayer){
 	}
 }
 
+// Finding all the emptiedIndexes that the human and ai have not checked
+function emptiedIndexes(board){
+	return board.filter(function (elem){
+		return (elem != human && elem != ai)
+	})
+}
+// ------- Minimax Algorithm ------- //
+
+
 
 $(function(){
 	var hasPickedSymbol = false;
