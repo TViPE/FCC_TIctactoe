@@ -15,10 +15,10 @@ header h1{
 }
 .innerPickSymbol {
 	width: 400px;
-	height: 500px;
+	height: 460px;
 	border: 1px solid;
 	border-radius: 5px;
-	margin-top: 100px;
+	margin-top: 60px;
 	background-color: #223d68;
 }
 .pickSymbolText {
@@ -90,6 +90,7 @@ button:hover {
 	height: 150px;
 	margin-bottom: -10px;
 	margin-left: -8px;
+	font-size: 40px;
 }
 
 .messageRow {
