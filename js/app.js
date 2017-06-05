@@ -26,13 +26,13 @@ function move(elem, currentPlayer){
 }
 
 function switchPlayer(){
-	console.log("Before switch: " + currentPlayer);
+	//console.log("Before switch: " + currentPlayer);
  	if(currentPlayer == human) {
 		currentPlayer = ai;
 	} else {
 		currentPlayer = human;
 	}
-	console.log("After switch: " + currentPlayer);
+	//console.log("After switch: " + currentPlayer);
 }
 
 function isWinning(board, currentPlayer){
@@ -72,7 +72,6 @@ function minimax(board, currentPlayer){
 	// ai win: 10
 	// human win: -10;
 	// tie : 0
-
 	if (isWinning(board, human) === true){
 		return {score: -10};
 	} else if(isWinning(board, ai) === true){
@@ -156,6 +155,8 @@ function minimax(board, currentPlayer){
 }
 // ------- Minimax Algorithm End ------- //
 
+
+// ------- Game Main Function ------- //
 $(function(){
 	var hasPickedSymbol = false;
 	var hasPickedPlayer = false;
@@ -169,19 +170,19 @@ $(function(){
 		//$('.innerPickSymbol').hide();
 		count++;
 	});
-
-	$('.firstPlayerBtn').click(function(){
-		currentPlayer = $(this).text();
-		currentPlayer == "Human" ? currentPlayer = human : currentPlayer = ai;
-		$(this).css('backgroundColor', '#fc6f37');
-		hasPickedPlayer = true;
-		//$('.pickPlayer').hide();
-		count++;
-	});
+	currentPlayer = human;
+	// $('.firstPlayerBtn').click(function(){
+	// 	currentPlayer = $(this).text();
+	// 	currentPlayer == "Human" ? currentPlayer = human : currentPlayer = ai;
+	// 	$(this).css('backgroundColor', '#fc6f37');
+	// 	hasPickedPlayer = true;
+	// 	//$('.pickPlayer').hide();
+	// 	count++;
+	// });
 
 	$('.startBtn').click(function(){
-		if ((hasPickedPlayer == false) && (hasPickedSymbol == false)){
-			window.alert("Please pick a symbol && pick first player")
+		if (hasPickedSymbol == false){
+			window.alert("Please pick a symbol && pick first player");
 		} else {
 			$('.pickSymbol').hide();
 			$('.gameBoard').show();
@@ -193,23 +194,26 @@ $(function(){
 			$('.boardBtn').click(function(){
 				move(this, currentPlayer);
 				moveCount++;
-				isWinning(gameBoard, currentPlayer);
+				//isWinning(gameBoard, currentPlayer);
+				var test = isWinning(gameBoard, currentPlayer);
+				if(test === true){
+					window.alert(currentPlayer + " win");
+				} else if(moveCount > 8){
+					window.alert("Tie");
+				}
 				switchPlayer();
 
+				// Check if currentPlayer is ai
+				// Call the minimax function to get the best move
+				// Automatically find the button with the respective index
 				if(currentPlayer == ai){
 					// Best move is also the id of the gameboard button
+					console.log('hello');
 					var bestMove = minimax(gameBoard,ai);
 					var bestMoveIndex = bestMove.index;
-					console.log("best index: " + bestMoveIndex);
 					$('#' + bestMoveIndex).click();
-				}
-				
-			});
-			// 	// Check if currentPlayer is ai
-			// 	// Call the minimax function to get the best move
-			// 	// Automatically find the button with the respective index
-			// });
-		
+				};
+			});		
 		}
 	})
 });
