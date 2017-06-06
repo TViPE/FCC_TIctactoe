@@ -99,7 +99,73 @@ button:hover {
 	margin-bottom: -10px;
 	margin-left: -8px;
 	font-size: 40px;
+	background-color: #fff;
 }
+
+@media screen and (max-width: 991px) {
+	.board button {
+		top: -15px;
+		position: inherit;
+		width: 120px;
+		height: 120px;
+		margin-bottom: -12px;
+		margin-left: -2px;
+		font-size: 40px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	
+	.board button {
+		top: -15px;
+		position: inherit;
+		width: 135px;
+		height: 135px;
+		margin-bottom: -12px;
+		margin-left: -2px;
+		font-size: 30px;
+	}
+}
+
+@media screen and (max-width: 643px) {
+	
+	.board button {
+		top: -15px;
+		position: inherit;
+		width: 125px;
+		height: 125px;
+		margin-bottom: -10px;
+		margin-left: -2px;
+		font-size: 30px;
+	}
+}
+
+@media screen and (max-width: 574px) {
+	.board {
+		left: 15%;
+	}
+	.board button {
+		top: -10px;
+		position: inherit;
+		width: 100px;
+		height: 100px;
+		margin-bottom: -10px;
+		margin-left: -2px;
+		font-size: 30px;
+	}
+
+	.playerSection {
+		display: none;
+	}
+
+	.computerSection {
+		display: none;
+	}
+
+}
+
+
+
 
 
 
