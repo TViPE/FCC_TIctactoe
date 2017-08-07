@@ -1,5 +1,5 @@
-var human = "X";
-var ai = "O";
+var human = "";
+var ai = "";
 var currentPlayer;
 var isGamePlaying = false;
 var hasWin = false;
@@ -188,6 +188,21 @@ $(function(){
 			$('.gameBoard').show();
 			$('.playerSymbol').text(human);
 			$('.aiSymbol').text(ai);
+			$('.resetBtn').click(function(){
+				if($('.boardBtn').prop('disabled')){
+					$('.boardBtn').prop('disabled', false);
+					$('.boardBtn').text('');
+					gameBoard = [0,1,2,3,4,5,6,7,8];
+					moveCount = 0;
+					currentPlayer = human;
+
+				} else {
+					$('.boardBtn').text('');
+					gameBoard = [0,1,2,3,4,5,6,7,8];
+					moveCount = 0;
+					currentPlayer = human;
+				}
+			});
 
 			// Click function for boardBtn
 		
@@ -198,8 +213,10 @@ $(function(){
 				var test = isWinning(gameBoard, currentPlayer);
 				if(test === true){
 					window.alert(currentPlayer + " win");
+					$(".boardBtn").prop('disabled', true);
 				} else if(moveCount > 8){
 					window.alert("Tie");
+					$(".boardBtn").prop('disabled', true);
 				}
 				switchPlayer();
 
@@ -208,7 +225,6 @@ $(function(){
 				// Automatically find the button with the respective index
 				if(currentPlayer == ai){
 					// Best move is also the id of the gameboard button
-					console.log('hello');
 					var bestMove = minimax(gameBoard,ai);
 					var bestMoveIndex = bestMove.index;
 					$('#' + bestMoveIndex).click();

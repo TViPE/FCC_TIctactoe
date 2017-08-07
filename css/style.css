@@ -102,6 +102,12 @@ button:hover {
 	background-color: #fff;
 }
 
+.resetBtn {
+	margin-top: 20px;
+	width: 100px;
+	font-size: 2em;
+}
+
 @media screen and (max-width: 991px) {
 	.board button {
 		top: -15px;
